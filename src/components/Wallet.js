@@ -8,7 +8,7 @@ const web3 = createAlchemyWeb3(
 
 function Wallet() {
 	
-  const myAddress = '0x5470BFdf7cE31b221e4eb001Dab10Ba798ccF6a1';
+  const myAddress = '0xd63c61aabd59DC5D0399eBeB58627D407C019C62';
   
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
