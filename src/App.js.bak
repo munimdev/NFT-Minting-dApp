@@ -198,7 +198,7 @@ function App() {
                   id="telegramLink"
                   className="button outline1 w-inline-block"
                   style={{ marginTop: 32 }}
-                  href="https://t.me/ModernPokerClub_Support"
+                  href="#"
                 >
                   <div>Join our Telegram</div>
                   <div className="button--icon w-embed">
