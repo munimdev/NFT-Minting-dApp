@@ -8,39 +8,13 @@ import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
 import Wallet from "./components/Wallet";
 
 function App() {
-  // const [randomWallet, setRandomWallet] = useState(null);
-
-  // useEffect(() => {
-  //   //generate random wallet address after every 5 seconds
-  //   const generateWallet = () => {
-  //     setRandomWallet("0x" + Math.random().toString(36).substr(-40));
-  //     const wallet = "0x" + Math.random().toString(36).substr(-40);
-  //     console.log(wallet);
-  //   };
-
-  //   toast.success(randomWallet, {
-  //     position: "bottom-left",
-  //     autoClose: 5000,
-
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
-
-  //   //after 5 seconds call function again
-  //   generateWallet();
-  // }, []);
-
-  if (typeof window.ethereum === 'undefined') {
-	alert("Please install Metamask in your browser!");
+  if (typeof window.ethereum === "undefined") {
+    alert("Please install Metamask in your browser!");
     window.location = "https://metamask.io/download/";
   }
-	  
-
 
   const [randomWallet, setRandomWallet] = useState(null);
+  const [increm, setIncm] = useState(332);
 
   useEffect(() => {
     const randomnumbers = Math.random().toString(36).substr(-40);
@@ -55,6 +29,8 @@ function App() {
           Math.random().toString(18).substr(-4)
       );
     }, 6000);
+
+    setIncm(increm + 1);
 
     console.log(randomWallet);
 
@@ -76,8 +52,6 @@ function App() {
     return () => clearInterval(interval);
   }, [randomWallet]);
 
-  // generate random bloackchain address after every 5 seconds
-
   return (
     <>
       <ToastContainer
@@ -92,13 +66,13 @@ function App() {
         pauseOnHover
       />
 
-      <div className="ether_div w-100">
+      {/* <div className="ether_div w-100">
         <img
           className="ether_img mx-auto d-flex"
           src="https://modernpokerclub-mint.com/images/eth.gif"
           alt=""
         />
-      </div>
+      </div> */}
 
       <div className="App container-fluid">
         <div className="w_set index0  mint-card__container">
@@ -107,7 +81,7 @@ function App() {
 
           {/* svg */}
 
-          <div className="row justify-content-between">
+          <div className="row mt_screen justify-content-between">
             {/*  left div start */}
             <motion.div
               initial={{ x: -1000 }}
@@ -119,18 +93,14 @@ function App() {
                 <div className=" d-flex flex-column align-items-center pading_9 ">
                   <p className="primary_color font-600">Limited Mint</p>
 
-                  <img
-                    className="img2 mx-auto"
-                    src="https://modernpokerclub-mint.com/images/nft.gif"
-                    alt=""
-                  />
+                  <img className="img2 mx-auto" src="assets/nft.gif" alt="" />
 
                   <h2 className="cus_style1 margin_78 mt-4 font_custom">
                     Mint Yours Now
                   </h2>
 
                   {/*component wallet */}
-                  <Wallet />
+                  <Wallet increm={increm} />
                   {/*component wallet */}
 
                   <h5 className="font_custom">Fair Distribution</h5>
@@ -177,8 +147,9 @@ function App() {
                 <a
                   id="discordLink"
                   className="button outline1 w-inline-block"
-                  style={{ marginTop: 32 }}
-                  href="#"
+                  style={{ marginTop: 25 }}
+                  href="https://discord.gg/5UdSVkFZWX"
+                  target={`_blank`}
                 >
                   <div>Join our Discord</div>
                   <div className="button--icon w-embed">
@@ -194,17 +165,25 @@ function App() {
                     </svg>
                   </div>
                 </a>
-				<a
+                <a
                   id="telegramLink"
                   className="button outline1 w-inline-block"
-                  style={{ marginTop: 32 }}
+                  style={{ marginTop: 25 }}
                   href="https://t.me/ModernPokerClub_Support"
                 >
                   <div>Join our Telegram</div>
                   <div className="button--icon w-embed">
-                    <svg style={{ marginLeft: 4, marginTop: -4 }} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
-</svg>
+                    <svg
+                      style={{ marginLeft: 7, marginTop: -4, width: "19px" }}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      class="bi bi-telegram"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
+                    </svg>
                   </div>
                 </a>
               </div>
@@ -216,7 +195,6 @@ function App() {
       <Footer />
     </>
   );
-  
 }
 
 export default App;
